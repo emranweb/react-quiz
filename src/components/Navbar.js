@@ -1,26 +1,20 @@
 import React from "react";
+import LogoBg from "../assets/logo-bg.png";
+import style from "../style/Navbar.module.css";
+import Account from "./Account";
 
 const Navbar = () => {
   return (
-    <nav class="nav">
+    <nav className={style.nav}>
       <ul>
         <li>
-          <a href="index.html" class="brand">
-            <img src="./images/logo-bg.png" alt="Learn with Sumit Logo" />
+          <a href="index.html" className={style.brand}>
+            <img src={LogoBg} alt="Learn with Sumit Logo" />
             <h3>Learn with Sumit</h3>
           </a>
         </li>
       </ul>
-      <div class="account">
-        <span class="material-icons-outlined" title="Account">
-          account_circle
-        </span>
-        <a href="signup.html">Signup</a>
-        <span class="material-icons-outlined" title="Logout">
-          {" "}
-          logout{" "}
-        </span>
-      </div>
+      <Account />
     </nav>
   );
 };
