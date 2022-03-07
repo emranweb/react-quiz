@@ -1,11 +1,11 @@
 import React from "react";
 
-import style from "../style/Form.module.css";
-
-const Form = ({ children, ...rest }) => {
+const Form = ({ children, className, ...rest }) => {
   return (
     <>
-      <form {...rest}>{children}</form>
+      <form className={className} {...rest}>
+        {children}
+      </form>
     </>
   );
 };
