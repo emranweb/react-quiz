@@ -1,8 +1,8 @@
-import LoginPage from "../pages/LoginPage";
+import QuizPage from "../pages/QuizPage";
 import "../style/App.css";
 
 function App() {
-  return <LoginPage />;
+  return <QuizPage />;
 }
 
 export default App;
