@@ -1,0 +1,8 @@
+/* illustration component */
+.illustration {
+  padding: 5rem 2rem;
+}
+
+.illustration img {
+  max-width: 80%;
+}
