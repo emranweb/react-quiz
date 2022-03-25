@@ -1,10 +1,10 @@
 import React from "react";
 
-const TextInput = (props) => {
+const TextInput = ({ icon, ...rest }) => {
   return (
     <div className="textInput">
-      <input {...props} />
-      <span className="material-icons-outlined"> person </span>
+      <input {...rest} />
+      <span className="material-icons-outlined"> {icon} </span>
     </div>
   );
 };
