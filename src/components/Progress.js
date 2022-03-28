@@ -1,5 +1,6 @@
 import React from "react";
 import style from "../style/Progress.module.css";
+import Button from "./Button";
 
 const Progress = () => {
   return (
@@ -8,16 +9,16 @@ const Progress = () => {
         <span className="material-icons-outlined"> arrow_back </span>
       </div>
       <div className={style.rangeArea}>
-        <div className="tooltip">24% Cimplete!</div>
+        <div className="tooltip">24% Complete!</div>
         <div className={style.rangeBody}>
-          <div className={style.progress} style="width: 20%"></div>
+          <div className={style.progress} style={{ width: "20%" }}></div>
         </div>
       </div>
       <a href="result.html">
-        <button className="button next">
+        <Button className={`button next`}>
           <span>Next Question</span>
           <span className="material-icons-outlined"> arrow_forward </span>
-        </button>
+        </Button>
       </a>
     </div>
   );
