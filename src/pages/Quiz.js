@@ -1,6 +1,7 @@
 import React from "react";
-import Answers from "./Answers";
-import Progress from "./Progress";
+import Answers from "../components/Answers";
+import MiniPlayer from "../components/MiniPlayer";
+import Progress from "../components/Progress";
 
 const Quiz = () => {
   return (
@@ -9,6 +10,7 @@ const Quiz = () => {
       <h4>Question can have multiple answers</h4>
       <Answers />
       <Progress />
+      <MiniPlayer />
     </>
   );
 };

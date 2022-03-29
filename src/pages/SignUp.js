@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
+import CheckBox from "../components/CheckBox";
+import Form from "../components/Form";
+import Illustration from "../components/Illustration";
+import Info from "../components/Info";
+import TextInput from "../components/TextInput";
 import style from "../style/Signup.module.css";
-import Button from "./Button";
-import CheckBox from "./CheckBox";
-import Form from "./Form";
-import Illustration from "./Illustration";
-import Info from "./Info";
-import TextInput from "./TextInput";
 
 const SignUp = () => {
   return (
@@ -31,7 +32,7 @@ const SignUp = () => {
             <span>Submit Now</span>
           </Button>
           <Info className="info">
-            Already have an account? <a href="login.html">Login</a> instead.
+            Already have an account? <Link to="/login">Login</Link> instead.
           </Info>
         </Form>
       </div>
