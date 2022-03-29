@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
+import Form from "../components/Form";
+import Illustration from "../components/Illustration";
+import Info from "../components/Info";
+import TextInput from "../components/TextInput";
 import style from "../style/Login.module.css";
-import Button from "./Button";
-import Form from "./Form";
-import Illustration from "./Illustration";
-import Info from "./Info";
-import TextInput from "./TextInput";
 
 const Login = () => {
   return (
@@ -25,7 +26,7 @@ const Login = () => {
             <span>Submit Now</span>
           </Button>
           <Info className="info">
-            Don't have an account? <a href="signup.html">Signup</a> instead.
+            Don't have an account? <Link to="/signup">Signup</Link> instead.
           </Info>
         </Form>
       </div>

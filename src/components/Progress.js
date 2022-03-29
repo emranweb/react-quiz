@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import style from "../style/Progress.module.css";
 import Button from "./Button";
 
@@ -14,12 +15,12 @@ const Progress = () => {
           <div className={style.progress} style={{ width: "20%" }}></div>
         </div>
       </div>
-      <a href="result.html">
+      <Link to="/result">
         <Button className={`button next`}>
           <span>Next Question</span>
           <span className="material-icons-outlined"> arrow_forward </span>
         </Button>
-      </a>
+      </Link>
     </div>
   );
 };

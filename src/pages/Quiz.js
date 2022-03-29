@@ -1,7 +1,7 @@
 import React from "react";
-import Answers from "./Answers";
-import MiniPlayer from "./MiniPlayer";
-import Progress from "./Progress";
+import Answers from "../components/Answers";
+import MiniPlayer from "../components/MiniPlayer";
+import Progress from "../components/Progress";
 
 const Quiz = () => {
   return (

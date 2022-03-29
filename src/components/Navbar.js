@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LogoBg from "../assets/logo-bg.png";
 import style from "../style/Navbar.module.css";
 import Account from "./Account";
@@ -8,10 +9,10 @@ const Navbar = () => {
     <nav className={style.nav}>
       <ul>
         <li>
-          <a href="index.html" className={style.brand}>
+          <Link to="/" className={style.brand}>
             <img src={LogoBg} alt="Learn with Sumit Logo" />
             <h3>Learn with Sumit</h3>
-          </a>
+          </Link>
         </li>
       </ul>
       <Account />
