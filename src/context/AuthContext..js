@@ -1,21 +1,33 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
 } from "firebase/auth";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const AuthContext = React.createContext();
 
+// context consumer
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
+// context provider
 export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const subscribe = onAuthStateChanged(auth, (user) => {
+      setCurrent(user);
+      setLoading(false);
+    });
+    return subscribe;
+  }, []);
 
   //sign up
   const signup = async (email, password, username) => {
@@ -47,8 +59,9 @@ export const AuthProvider = ({ children }) => {
     signin,
     signout,
   };
-
-  <AuthContext.Provider value={value}>
-    {!loading && children}
-  </AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
