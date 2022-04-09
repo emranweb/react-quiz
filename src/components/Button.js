@@ -3,9 +3,9 @@ import style from "../style/Button.module.css";
 
 const Button = ({ className, children, ...rest } = {}) => {
   return (
-    <div className={`${style.button} ${className}`} {...rest}>
+    <button className={`${style.button} ${className}`} {...rest}>
       {children}
-    </div>
+    </button>
   );
 };
 

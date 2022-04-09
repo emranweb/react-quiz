@@ -7,6 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
+import "../firebase";
 
 const AuthContext = React.createContext();
 
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
     await updateProfile(auth.currentUser, { displayName: username });
     const user = auth.currentUser;
-    setCurrent(...user);
+    setCurrent(user);
   };
 
   //sign in
