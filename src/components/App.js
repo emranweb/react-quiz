@@ -7,6 +7,7 @@ import Quiz from "../pages/Quiz";
 import Result from "../pages/Result";
 import SignUp from "../pages/SignUp";
 import "../style/App.css";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/quiz" element={<PrivateRoute />}>
+            <Route path="/quiz" element={<Quiz />} />
+          </Route>
           <Route path="/result" element={<Result />} />
         </Routes>
       </Layout>
