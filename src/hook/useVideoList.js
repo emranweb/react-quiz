@@ -8,28 +8,27 @@ const useVideoList = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    const fetchVideos = async () => {
+    async function fetchVideos() {
       const db = getDatabase();
       const videoRef = ref(db, "videos");
-      const videoQuery = query(videoRef, orderByKey);
+      const videoQuery = query(videoRef, orderByKey());
 
       try {
         setLoading(true);
         const snapshot = await get(videoQuery);
         setLoading(false);
 
-        console.log(snapshot);
-
         if (snapshot.exists()) {
-          console.log(snapshot);
+          setVideos((prev) => [...prev, ...Object.values(snapshot.val())]);
         }
       } catch (error) {
         console.log(error);
       }
-    };
+    }
 
     fetchVideos();
   }, []);
+
   return {
     loading,
     error,

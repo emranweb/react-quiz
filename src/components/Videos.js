@@ -8,13 +8,10 @@ const Videos = () => {
   console.log(videos);
   return (
     <div className={style.videos}>
-      <Video />
-      <Video />
-      <Video />
-      <Video />
-      <Video />
-      <Video />
-      <Video />
+      {videos &&
+        videos.map((item) => {
+          return <Video key={item.youtubeID} data={item} />;
+        })}
     </div>
   );
 };
