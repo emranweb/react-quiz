@@ -10,6 +10,8 @@ const Account = () => {
     signout();
   };
 
+  console.log(current.displayName);
+
   return (
     <>
       <div className={style.account}>
