@@ -20,6 +20,9 @@ function App() {
           <Route path="/quiz" element={<PrivateRoute />}>
             <Route path="/quiz" element={<Quiz />} />
           </Route>
+          <Route path="/quiz/:id" element={<PrivateRoute />}>
+            <Route path="/quiz/:id" element={<Quiz />} />
+          </Route>
           <Route path="/result" element={<Result />} />
         </Routes>
       </Layout>

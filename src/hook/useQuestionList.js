@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, ref, query, orderByKey, get } from "firebase/database";
 
-const useQuestionList = () => {
+const useQuestionList = (videoId) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -9,7 +9,7 @@ const useQuestionList = () => {
   useEffect(() => {
     async function getQuestionList() {
       const db = getDatabase();
-      const quizRef = ref(db, "quiz");
+      const quizRef = ref(db, `quiz/${videoId}/questions`);
       const quizQuery = query(quizRef, orderByKey());
 
       try {
@@ -17,17 +17,16 @@ const useQuestionList = () => {
         setLoading(false);
         const snapshot = await get(quizQuery);
         if (snapshot.exists()) {
-          setQuestions((prev) => [...prev, ...Object.values(snapshot.val())]);
+          setQuestions(...Object.values(snapshot.val()));
         }
       } catch (error) {
         setLoading(true);
         setError(error);
-        console.log(error);
       }
     }
 
     getQuestionList();
-  }, []);
+  }, [videoId]);
 
   return {
     questions,

@@ -9,9 +9,6 @@ const Account = () => {
   const handleLogout = () => {
     signout();
   };
-
-  console.log(current.displayName);
-
   return (
     <>
       <div className={style.account}>
@@ -20,7 +17,7 @@ const Account = () => {
             <span className="material-icons-outlined" title="Account">
               account_circle
             </span>
-            <span>{current.displayName}</span>
+            {current.displayName && <span>{current.displayName}</span>}
             <span
               className="material-icons-outlined"
               onClick={handleLogout}
