@@ -31,6 +31,7 @@ const useQuestionList = (videoId) => {
   return {
     questions,
     loading,
+    error,
   };
 };
 
