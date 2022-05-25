@@ -13,12 +13,11 @@ const useQuestionList = (videoId) => {
       const quizQuery = query(quizRef, orderByKey());
 
       try {
-        setError("");
-        setLoading(false);
         const snapshot = await get(quizQuery);
         if (snapshot.exists()) {
-          setQuestions(...Object.values(snapshot.val()));
+          setQuestions((prev) => [...prev, ...Object.values(snapshot.val())]);
         }
+        setLoading(false);
       } catch (error) {
         setLoading(true);
         setError(error);

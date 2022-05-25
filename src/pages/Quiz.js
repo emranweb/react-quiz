@@ -1,19 +1,24 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
 import Answers from "../components/Answers";
 import MiniPlayer from "../components/MiniPlayer";
 import Progress from "../components/Progress";
 import useQuestionList from "../hook/useQuestionList";
-import Question from "../components/Question";
+import _ from "lodash";
 
 const initialState = [];
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case "add":
-      if (action.value) {
-        action.value.options.forEach((item) => console.log(item));
-      }
-
+    case "questions":
+      action.value.forEach((element) =>
+        element.options.forEach((element) => (element.checked = false))
+      );
+      return action.value;
+    case "answer":
+      const questions = _.cloneDeep(state);
+      questions[action.currnet].options[action.index].checked = action.value;
+      return questions;
     default:
       return state;
   }
@@ -22,24 +27,41 @@ const reducer = (state, action) => {
 const Quiz = () => {
   const { id } = useParams();
   const { questions, error, loading } = useQuestionList(id);
-
   const [newQuestion, dispatch] = useReducer(reducer, initialState);
-
+  const [current, setCurrent] = useState(0);
   useEffect(() => {
-    if (questions) {
-      dispatch({ type: "add", value: questions });
-    } else {
-      console.log("data not exist");
-    }
+    dispatch({
+      type: "questions",
+      value: questions,
+    });
   }, [questions]);
+
+  const handleChange = (e, index) => {
+    dispatch({
+      type: "answer",
+      currnet: current,
+      index: index,
+      value: e.target.checked,
+    });
+    console.log("click are workig");
+  };
 
   return (
     <>
-      <h1>Pick three of your favorite Star Wars Flims</h1>
-      <h4>Question can have multiple answers</h4>
-      <Answers />
-      <Progress />
-      <MiniPlayer />
+      {loading && <h3>loading...</h3>}
+      {error && <h4>Error</h4>}
+      {!loading && (
+        <>
+          <h1>{newQuestion[current].title}</h1>
+          <h4>Question can have multiple answers</h4>
+          <Answers
+            options={newQuestion[current].options}
+            handleChange={handleChange}
+          />
+          <Progress />
+          <MiniPlayer />
+        </>
+      )}
     </>
   );
 };

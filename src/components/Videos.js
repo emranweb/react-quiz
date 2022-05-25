@@ -12,7 +12,7 @@ const Videos = () => {
       {videos && (
         <InfiniteScroll
           dataLength={videos.length}
-          next={() => setPages(page + 8)}
+          next={() => setPages(page + 10)}
           hasMore={hasMore}
         >
           {videos.map((item) => {
