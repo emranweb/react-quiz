@@ -3,7 +3,6 @@ import style from "../style/Answers.module.css";
 import CheckBox from "./CheckBox";
 
 const Answers = ({ options, handleChange }) => {
-  console.log(options);
   return (
     <div className={style.answers}>
       {options.map((el, index) => {

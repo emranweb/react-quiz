@@ -46,6 +46,14 @@ const Quiz = () => {
     console.log("click are workig");
   };
 
+  const handlePrev = () => {
+    console.log("prev");
+  };
+
+  const handleNext = () => {
+    console.log("next");
+  };
+
   return (
     <>
       {loading && <h3>loading...</h3>}
@@ -58,7 +66,7 @@ const Quiz = () => {
             options={newQuestion[current].options}
             handleChange={handleChange}
           />
-          <Progress />
+          <Progress events={{ prev: handlePrev, next: handleNext }} />
           <MiniPlayer />
         </>
       )}
