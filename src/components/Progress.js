@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import style from "../style/Progress.module.css";
 import Button from "./Button";
 
-const Progress = ({ events }) => {
+const Progress = ({ events, progress, length }) => {
+  const width = (100 / length) * (progress + 1);
   const { prev, next } = events;
   return (
     <div className={style.progressBar}>
@@ -11,9 +11,9 @@ const Progress = ({ events }) => {
         <span className="material-icons-outlined"> arrow_back </span>
       </div>
       <div className={style.rangeArea}>
-        <div className="tooltip">24% Complete!</div>
+        <div className="tooltip">{width} Complete!</div>
         <div className={style.rangeBody}>
-          <div className={style.progress} style={{ width: "20%" }}></div>
+          <div className={style.progress} style={{ width: width + "%" }}></div>
         </div>
       </div>
       <Button className={`button next`} onClick={() => next()}>

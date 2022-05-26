@@ -47,11 +47,17 @@ const Quiz = () => {
   };
 
   const handlePrev = () => {
-    console.log("prev");
+    if (current > 0) {
+      console.log("working");
+      setCurrent((prev) => prev - 1);
+    }
   };
 
   const handleNext = () => {
-    console.log("next");
+    if (current + 1 < questions.length) {
+      console.log("working");
+      setCurrent((prev) => prev + 1);
+    }
   };
 
   return (
@@ -66,7 +72,11 @@ const Quiz = () => {
             options={newQuestion[current].options}
             handleChange={handleChange}
           />
-          <Progress events={{ prev: handlePrev, next: handleNext }} />
+          <Progress
+            events={{ prev: handlePrev, next: handleNext }}
+            progress={current}
+            length={questions.length}
+          />
           <MiniPlayer />
         </>
       )}
