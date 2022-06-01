@@ -13,10 +13,6 @@ const NotFound = () => {
   return <h3>404 Not Found</h3>;
 };
 
-const Test = () => {
-  return <h3>Test page</h3>;
-};
-
 function App() {
   return (
     <AuthProvider>
