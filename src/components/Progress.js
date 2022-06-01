@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const Progress = ({ events, progress, length }) => {
   const width = (100 / length) * (progress + 1);
-  const { prev, next } = events;
+  const { prev, next, submit } = events;
   return (
     <div className={style.progressBar}>
       <div className={style.backButton} onClick={() => prev()}>
@@ -16,7 +16,7 @@ const Progress = ({ events, progress, length }) => {
           <div className={style.progress} style={{ width: width + "%" }}></div>
         </div>
       </div>
-      <Button className={`button next`} onClick={() => next()}>
+      <Button className={`button next`} onClick={width === 100 ? submit : next}>
         <span>Next Question</span>
         <span className="material-icons-outlined"> arrow_forward </span>
       </Button>

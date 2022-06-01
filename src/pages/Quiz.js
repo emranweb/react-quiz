@@ -1,10 +1,13 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Answers from "../components/Answers";
 import MiniPlayer from "../components/MiniPlayer";
 import Progress from "../components/Progress";
 import useQuestionList from "../hook/useQuestionList";
 import _ from "lodash";
+import { useAuth } from "../context/AuthContext.";
+import { getDatabase, set } from "firebase/database";
+import { ref } from "firebase/database";
 
 const initialState = [];
 
@@ -29,6 +32,9 @@ const Quiz = () => {
   const { questions, error, loading } = useQuestionList(id);
   const [newQuestion, dispatch] = useReducer(reducer, initialState);
   const [current, setCurrent] = useState(0);
+  const { current: currnetUser } = useAuth();
+  const nagination = useNavigate();
+
   useEffect(() => {
     dispatch({
       type: "questions",
@@ -43,21 +49,29 @@ const Quiz = () => {
       index: index,
       value: e.target.checked,
     });
-    console.log("click are workig");
   };
 
   const handlePrev = () => {
     if (current > 0) {
-      console.log("working");
       setCurrent((prev) => prev - 1);
     }
   };
 
   const handleNext = () => {
     if (current + 1 < questions.length) {
-      console.log("working");
       setCurrent((prev) => prev + 1);
     }
+  };
+
+  // handle result submit
+  const handleSubmit = async () => {
+    const userId = currnetUser.uid;
+    const db = getDatabase();
+    const resultRef = ref(db, `results/${userId}`);
+    await set(resultRef, {
+      [id]: newQuestion,
+    });
+    nagination(`/result/${id}`, { state: newQuestion });
   };
 
   return (
@@ -73,7 +87,11 @@ const Quiz = () => {
             handleChange={handleChange}
           />
           <Progress
-            events={{ prev: handlePrev, next: handleNext }}
+            events={{
+              prev: handlePrev,
+              next: handleNext,
+              submit: handleSubmit,
+            }}
             progress={current}
             length={questions.length}
           />
