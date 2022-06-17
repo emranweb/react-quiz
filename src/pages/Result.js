@@ -10,6 +10,7 @@ const Result = () => {
   const { id } = useParams();
   const { answers, loading, error } = useAnswer(id);
   const location = useLocation();
+  console.log(location);
 
   const calculate = () => {
     let score = 0;
