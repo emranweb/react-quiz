@@ -2,9 +2,10 @@ import React from "react";
 import Analysis from "../components/Analysis";
 import Summary from "../components/Summary";
 import { useLocation, useParams } from "react-router-dom";
-import Answers from "../components/Answers";
+import Answer from "../components/Answer";
 import useAnswer from "../hook/useAnswer";
 import _ from "lodash";
+import Question from "../components/Question";
 
 const Result = () => {
   let newAnswer;
@@ -44,7 +45,7 @@ const Result = () => {
     <>
       <Summary score={calculateScore} noq={newAnswer ? newAnswer.length : 1} />
       <Analysis />
-      <Answers options={newAnswer ? newAnswer : []} />
+      <Answer options={newAnswer ? newAnswer : []} />
     </>
   );
 };

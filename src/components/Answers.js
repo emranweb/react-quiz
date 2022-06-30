@@ -3,7 +3,6 @@ import style from "../style/Answers.module.css";
 import CheckBox from "./CheckBox";
 
 const Answers = ({ options, handleChange }) => {
-  console.log(options);
   return (
     <div className={style.answers}>
       {options &&
@@ -15,6 +14,7 @@ const Answers = ({ options, handleChange }) => {
               text={el.title}
               value={index}
               checked={el.checked}
+              correct={el.correct}
               onChange={(e) => handleChange(e, index)}
             />
           );

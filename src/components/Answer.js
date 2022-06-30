@@ -1,11 +1,21 @@
 import React from "react";
+import CheckBox from "./CheckBox";
+import Answers from "./Answers";
 
-const Answer = ({ className, children, ...rest }) => {
+const Answer = ({ options }) => {
+  console.log(options);
   return (
-    <label className={className} {...rest}>
-      <input type="checkbox" id="option1" />
-      {children}
-    </label>
+    <>
+      {options &&
+        options.map((item, index) => {
+          return (
+            <div key={index}>
+              <h5>{item.title}</h5>
+              <Answers options={item.options} />
+            </div>
+          );
+        })}
+    </>
   );
 };
 
