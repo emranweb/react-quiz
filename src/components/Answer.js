@@ -7,11 +7,11 @@ const Answer = ({ options }) => {
   return (
     <>
       {options &&
-        options.map((item, index) => {
+        options.map((item, index, disable) => {
           return (
             <div key={index}>
               <h5>{item.title}</h5>
-              <Answers options={item.options} />
+              <Answers options={item.options} disable />
             </div>
           );
         })}

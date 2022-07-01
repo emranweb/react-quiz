@@ -45,7 +45,7 @@ const Result = () => {
     <>
       <Summary score={calculateScore} noq={newAnswer ? newAnswer.length : 1} />
       <Analysis />
-      <Answer options={newAnswer ? newAnswer : []} />
+      <Answer options={newAnswer ? newAnswer : []} disabled={true} />
     </>
   );
 };

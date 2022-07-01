@@ -2,21 +2,36 @@ import React from "react";
 import style from "../style/Answers.module.css";
 import CheckBox from "./CheckBox";
 
-const Answers = ({ options, handleChange }) => {
+const Answers = ({ options, handleChange, disable }) => {
   return (
     <div className={style.answers}>
       {options &&
         options.map((el, index) => {
           return (
-            <CheckBox
-              key={index}
-              className={style.answer}
-              text={el.title}
-              value={index}
-              checked={el.checked}
-              correct={el.correct}
-              onChange={(e) => handleChange(e, index)}
-            />
+            <div key={index}>
+              {disable ? (
+                <CheckBox
+                  className={`${style.answer} ${
+                    el.correct ? style.correct : style.wrong
+                  }`}
+                  text={el.title}
+                  value={index}
+                  checked={el.checked}
+                  correct={el.correct}
+                  disabled
+                  onChange={(e) => handleChange(e, index)}
+                />
+              ) : (
+                <CheckBox
+                  className={style.answer}
+                  text={el.title}
+                  value={index}
+                  checked={el.checked}
+                  correct={el.correct}
+                  onChange={(e) => handleChange(e, index)}
+                />
+              )}
+            </div>
           );
         })}
     </div>
