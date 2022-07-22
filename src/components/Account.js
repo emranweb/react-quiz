@@ -32,9 +32,6 @@ const Account = () => {
               account_circle
             </span>
             <Link to="/login">Login</Link>
-            <span className="material-icons-outlined" title="Logout">
-              logout
-            </span>
           </>
         )}
       </div>

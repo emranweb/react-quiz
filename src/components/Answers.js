@@ -12,7 +12,7 @@ const Answers = ({ options, handleChange, disable }) => {
               {disable ? (
                 <CheckBox
                   className={`${style.answer} ${
-                    el.correct ? style.correct : style.wrong
+                    el.correct ? style.correct : el.checked ? style.wrong : null
                   }`}
                   text={el.title}
                   value={index}
