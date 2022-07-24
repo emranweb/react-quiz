@@ -3,7 +3,6 @@ import CheckBox from "./CheckBox";
 import Answers from "./Answers";
 
 const Answer = ({ options }) => {
-  console.log(options);
   return (
     <>
       {options &&

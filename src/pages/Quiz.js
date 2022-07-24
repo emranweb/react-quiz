@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Answers from "../components/Answers";
 import MiniPlayer from "../components/MiniPlayer";
 import Progress from "../components/Progress";
@@ -34,6 +34,7 @@ const Quiz = () => {
   const [current, setCurrent] = useState(0);
   const { current: currnetUser } = useAuth();
   const nagination = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch({
@@ -95,7 +96,7 @@ const Quiz = () => {
             progress={current}
             length={questions.length}
           />
-          <MiniPlayer />
+          <MiniPlayer id={id} title={location.state} />
         </>
       )}
     </>
